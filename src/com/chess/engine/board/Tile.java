@@ -3,7 +3,6 @@ package com.chess.engine.board;
 
 import com.google.common.collect.ImmutableMap;
 
-import javax.management.ImmutableDescriptor;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +12,7 @@ public abstract class Tile{
 
     protected final int tileCoordinate;
 
-    private static final Map<Integer,emptyTile> EMPTY_TILES= createAllPossibleEmptyTiles();
+    private static final Map<Integer,emptyTile> EMPTY_TILES_CACHE = createAllPossibleEmptyTiles();
 
     private static Map<Integer, emptyTile> createAllPossibleEmptyTiles() {
         final Map<Integer, emptyTile> emptyTileMap=new HashMap<>();
@@ -26,7 +25,7 @@ public abstract class Tile{
     }
 
     public static Tile createTile(final int tileCoordinate, final Piece piece){
-        return piece!=null ? new occupiedTile(tileCoordinate, piece) : EMPTY_TILES.get(tileCoordinate);
+        return piece!=null ? new occupiedTile(tileCoordinate, piece) : EMPTY_TILES_CACHE.get(tileCoordinate);
     }
 
     private Tile(int tileCoordinate){
