@@ -8,14 +8,14 @@ import java.util.List;
 
 public abstract class Piece {
 
-    protected final int piece_posistion;
+    protected final int piece_position;
     protected final Alliance piece_Alliance;
 
     Piece(final int piece_position, final Alliance piece_Alliance){
         this.piece_Alliance=piece_Alliance;
-        this.piece_posistion=piece_position;
+        this.piece_position =piece_position;
     }
 
-    public abstract List<Move> calculateLegalMoves(final Board board)
+    public abstract List<Move> calculateLegalMoves(final Board board);
 
 }
